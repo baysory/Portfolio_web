@@ -1,0 +1,307 @@
+:root {
+    --bg-page: #0f0f11;
+    --bg-card: #18181b;
+    --bg-card-hover: #202024;
+    --text-main: #ededef;
+    --text-dim: #a1a1aa;
+    --accent: #8557e5;
+    --accent-glow: rgba(133, 87, 220, 0.2);
+    --border: #27272a;
+
+    /* Cores do terminal */
+    --term-bg: #0d1117;
+    --term-text: #00ff41;
+    --term-prompt: #bd93f9;
+    --term-IA: #00e5ff;
+    --term-cmd: #f1fa8c;
+    --term-error: #ff0000;
+    --term-dim: #6e7681;
+    --term-json-key: #56b6c2;
+    --term-json-string: #98c379;
+    --term-font: 'Fira Code', monospace;
+
+    /* Efeitos de Pós-Processamento, cria um brilho suave vazando das bordas */
+    --term-glow: 0 0 10px rgba(0, 255, 65, 0.5), 0 0 2px rgba(0, 255, 65, 0.3);
+    --term-glow-error: 0 0 15px rgba(255, 0, 0, 0.9), 0 0 5px rgba(255, 0, 0, 0.8);
+    --term-glow-IA: 0 0 10px rgba(0, 229, 255, 0.6);
+}
+
+body {
+    background-color: var(--bg-page);
+    color: var(--text-main);
+    font-family: 'Inter', sans-serif;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.bento-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(4, auto);
+    gap: 16px;
+    max-width: 1200px;
+    width: 100%;
+    transition: opacity 0.5s;
+    grid-auto-flow: dense;
+}
+
+.card {
+    background-color: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 24px;
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    transition: all 0.3s;
+    position: relative;
+    overflow: hidden;
+    text-decoration: none;
+    color: inherit;
+}
+
+.card:hover {
+    border-color: var(--accent);
+    box-shadow: 0 10px 30px var(--accent-glow);
+    transform: translateY(-4px);
+
+}
+
+/* estilização interno dos cards */
+.profile-header {
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+}
+
+/* placeholder da foto de perfil */
+.avatar-placeholder {
+    width: 80px;
+    height: 80px;
+    background: linear-gradient(45deg, var(--accent), #50fa7b);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 32px;
+    color: #fff;
+}
+
+.avatar-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+h1 {
+    font-size: 1.8rem;
+    font-weight: 800;
+    line-height: 1.2;
+}
+
+h2 {
+    font-size: 1rem;
+    color: var(--accent);
+    margin-bottom: 10px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+p {
+    color: var(--text-dim);
+    line-height: 1.6;
+    font-size: 0.95rem;
+}
+
+/* badge e uma bolinha flututuante que diz que está disponível para trabalho */ 
+.status-badge {
+    display: inline-block;
+    align-items: center;
+    gap: 6px;
+    background-color: rgba(80, 250, 123 , 0.1);
+    color: #50fa7b;
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+/* faz a bolinha pulsar */
+.status-dot {
+    width: 8px;
+    height: 8px;
+    background-color: #50fa7b;
+    border-radius: 50%;
+    animation: pulse 2s infinite;
+}
+
+/* Ícones das stacks */
+.tech-icon {
+    font-size: 2.5rem;
+    color: var(--text-dim);
+    transition: color 0.3s;
+}
+
+.card-stack:hover .tech-icon {
+    color: var(--text-main);
+}
+.card-stack:hover .js {
+    color: #f7df1e;
+}
+.card-stack:hover .node {
+    color: #68a063;
+}
+.card-stack:hover .terminal {
+    color: #4584b6;
+}
+
+.card-stack:hover .git {
+    color: #f1502f;
+}
+
+.projects-header {
+    display: flex;
+    border-bottom: 1px solid var(--border); background: rgba(0, 0, 0, 0.2);
+}
+
+.tab-btn {
+    flex: 1;
+    padding: 15px;
+    text-align: center;
+    cursor: pointer;
+    font-weight: 600;
+    color: var(--text-dim);
+    transition: all 0.3s;
+    font-size: 0.9rem;
+}
+
+.tab-btn:hover {
+    background: rgba(255, 255, 255, 0.05) ;
+    color: var(--text-main);
+}
+
+.tab-btn.active {
+    color: var(--accent);
+    border-bottom: 2px solid var(--accent);
+    background: rgba(130, 87, 229, 0.05);
+}
+
+.project-item {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    text-decoration: none;
+    color: inherit;
+    padding: 15px;
+    border-radius: 12px;
+    border: 1px solid var(--border);
+    margin-bottom: 10px;
+    transition: all 0.3s;
+    background: rgba(255, 255, 255, 0.02);
+}
+
+.project-item:hover {
+    border-color: var(--accent);
+    background-color: rgba(255, 255, 255, 0.05);
+    transform: translateX(5px);
+}
+
+.project-index {
+    font-family: 'Fira Code', monospace;
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: var(--text-dim);
+    opacity: 0.5;
+}
+
+.project-item:hover .project-index {
+    color: var(--accent);
+    opacity: 1;
+}
+
+.project-info {
+    flex-grow: 1;
+}
+
+.project-tap-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 5px;
+}
+
+.porject-title {
+    font-weight: 700;
+    font-size: 1rem;
+    color: var(--text-main);
+}
+
+.project-desc {
+    font-size: 0.85rem;
+    color: var(--text-dim);
+    margin-bottom: 8px;
+    line-height: 1.4;
+}
+
+.project-meta {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.mini-tag {
+    font-size: 0.7rem;
+    background: #27272a;
+    padding: 2px 6ox;
+    border-radius: 4px;
+    color: var(--text-dim);
+}
+
+.btn-icon{
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: #27272a;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-dim);
+    transition: all 0.3s;
+}
+
+.card:hover .btn-icon {
+    background: var(--accent);
+    color: #fff;
+    box-shadow: 0 0 10px var(--accent-glow);
+}
+
+.card-social, .card-terminal {
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    gap: 15px;
+}
+
+.card-terminal {
+    cursor: pointer;
+    background: linear-gradient(135deg, rgba(24, 24, 27, 1) 0%, rgba(30, 30, 35, 1) 100%);
+}
+
+/* Para mobile */
+
+.bento-grid {
+    grid-template-columns: 1fr;
+}
+.card-profile, .card-terminal, #cv-link, .card-about, .card-projects {
+    grid-column: span 1;
+}
+.card-stack {
+    grid-column: span 1;
+}
+
+
+
+

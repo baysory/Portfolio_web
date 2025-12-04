@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfólio web</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Fira+Code:wght@400;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="bento-grid" id="main-interface">
+        <div class="card card-profile">
+            <div class="profile-header">
+                <div class="avatar-placeholder" id="profile-avatar"></div>
+                <div >
+                    <h1>Eduardo Santos</h1>
+                    <h2>Back-end Developer</h2>
+                </div>
+                <p>Especialista em lógica e infraestrutura. Focando hoje em JS para dominar a IA amanhã</p>
+                <div class="status-badge">
+                    <div class="status-dot"></div>
+                    Disponível
+                </div>
+            </div>
+        </div>
+        <!-- github-link -->
+        <a href="#" id="github-link" class="card card-social" target="_blank">
+            <span>GitHub</span>
+            <i class="ph ph-github-logo"></i>
+        </a>
+        <!-- linkedin-link -->
+        <a href="#" id="linkedin-link" class="card card-social" target="_blank">
+            <span>LinkedIn</span>
+            <i class="ph ph-linkedin-logo"></i>
+        </a>    
+        <!-- icons da stacks -->
+        <div class="card card-stack">
+            <i class="ph ph-file-js tech-icon js" title="JavaScript"></i>
+            <i class="ph ph-database tech-icon node" title="Node.js"></i>
+            <i class="ph ph-terminal-window tech-icon terminal" title="Terminal"></i>
+            <i class="ph ph-git-branch tech-icon git" title="Git"></i>
+        </div>
+            <!-- Sobre mim -->
+        <div class="card card-about">
+            <h2>Alta Perfomance</h2>
+            <p>Background competitivo. Foco em disciplina e escalabilidade.</p>
+        </div>
+            <!-- Projetos com abas controladas por JS -->
+        <div class="card card-projects">
+            <div class="projects-header">
+                <div class="tab-btn active" onclick="switchTab('featured')">Destaques</div>
+                <div class="tab-btn" onclick="switchTab('featured')"> Todos (GitHub)</div>
+            </div>
+            <div class="projects-content" id="projects-container">
+                <p>Carregando...</p>
+            </div>
+        </div>
+        <!-- modo terminal -->
+        <div class="card card-terminal" onclick="openTerminal()">
+            <div>
+                <h2>Modo Terminal</h2>
+                <p>Acesse o sistema via CLI</p>
+            </div>
+            <i class="ph ph-terminal-window"></i>
+        </div>
+
+        <div class="card card-social" id="cv-link">
+            <span>Baixar CV</span>
+            <i class="ph ph-download-simple"></i>
+        </div>
+    </div>
+        <!-- inteface secundaria - terminal -->
+    <div id="terminal-overlay">
+        <div class="close-term-float" onclick="closeTerminal()"> 
+            [X] Sair
+        </div>
+        <div id="term-container" onclick="document.getElementById('term-input').focus()">
+            <div id="term-output"></div>
+            <div class="term-prompt-line" id="term-prompt-div">
+                <span class="term-prompt-line" id="term-prompt-div">visitante@Portfólio:~$</span>
+                <input type="text" id="term-input" autocomplete="off">
+            </div>
+        </div>
+            <!-- barra de status -->
+        <div id="term-status-bar">
+            <div class="keys">
+                <div class="status-key" onclick="exeCMD('help')">
+                    <span>F1</span>
+                    Help
+                </div>
+                <div class="status-key" onclick="exeCMD('api skills')">
+                    <span>F2</span>
+                    API
+                </div>
+                <div class="status-key" onclick="startChatMode()">
+                    <span>F3</span>
+                    ✨IA
+                </div>
+                <div class="status-key" onclick="closeTerminal()">
+                    <span>F4</span>
+                    Sair
+                </div>
+                <div id="status-text">JS-SHELL v2.0</div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
