@@ -43,14 +43,14 @@
         </div>
             <!-- Sobre mim -->
         <div class="card card-about">
-            <h2>Alta Perfomance</h2>
+            <h2>Alta Performance</h2>
             <p>Background competitivo. Foco em disciplina e escalabilidade.</p>
         </div>
             <!-- Projetos com abas controladas por JS -->
         <div class="card card-projects">
             <div class="projects-header">
                 <div class="tab-btn active" onclick="switchTab('featured')">Destaques</div>
-                <div class="tab-btn" onclick="switchTab('featured')"> Todos (GitHub)</div>
+                <div class="tab-btn" onclick="switchTab('all')">Todos (GitHub)</div>
             </div>
             <div class="projects-content" id="projects-container">
                 <p>Carregando...</p>
@@ -78,7 +78,7 @@
         <div id="term-container" onclick="document.getElementById('term-input').focus()">
             <div id="term-output"></div>
             <div class="term-prompt-line" id="term-prompt-div">
-                <span class="term-prompt-line" id="term-prompt-div">visitante@Portfólio:~$</span>
+                <span class="term-prompt-line" id="term-prompt-span">visitante@Portfólio:~$</span>
                 <input type="text" id="term-input" autocomplete="off">
             </div>
         </div>
@@ -105,5 +105,8 @@
             </div>
         </div>
     </div>
+
+
+    <script src="main.js"></script>
 </body>
 </html>
